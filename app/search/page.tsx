@@ -52,12 +52,15 @@ async function askDorotka(query: string, context: string): Promise<string | null
   // and skipping the Next.js API route removes one unnecessary hop.
   const rustApi = process.env.RUST_API_URL ?? "https://api.fraise.box";
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8_000);
     const res = await fetch(`${rustApi}/api/dorotka/ask`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ query, context }),
       cache: "no-store",
-    });
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout));
     if (!res.ok) return null;
     const data = await res.json() as { answer?: string };
     return data.answer ?? null;
