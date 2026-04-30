@@ -219,6 +219,69 @@ hr {
   .property-list li { grid-template-columns: 1fr; gap: 0.4rem; }
 }
 
+/* ── Homepage (Google-style) ──────────────────────────────────────────────── */
+
+.home {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  padding-block: 3rem;
+}
+
+.home-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  width: 100%;
+  max-width: 580px;
+}
+
+.home-hero {
+  text-align: center;
+}
+
+.home-wordmark {
+  font-family: var(--font-body), serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.home-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.35rem 0.9rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--text);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.home-footer {
+  position: fixed;
+  bottom: 1.5rem;
+}
+
 /* ── Search page ──────────────────────────────────────────────────────────── */
 
 .search-header {
@@ -254,6 +317,7 @@ hr {
   padding: 0.5rem 1rem;
   gap: 0.6rem;
   max-width: 560px;
+  width: 100%;
   transition: border-color 0.15s, background 0.15s;
 }
 
