@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --bg:       #FFFFFF;
-  --text:     #111111;
-  --muted:    #666666;
-  --border:   #DDDDDD;
-  --paper:    #FAFAF8;
+  --bg:     #FFFFFF;
+  --text:   #111111;
+  --muted:  #666666;
+  --border: #DDDDDD;
 }
 
 *,
@@ -30,8 +29,9 @@ body {
   background: var(--bg);
 }
 
-/* Document container — feels like a page */
-.document {
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+
+.page {
   width: 100%;
   max-width: 680px;
   margin-inline: auto;
@@ -39,7 +39,15 @@ body {
   padding-block: clamp(3rem, 8vw, 6rem);
 }
 
-/* Typography */
+.page-centered {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Typography ───────────────────────────────────────────────────────────── */
+
 h1 {
   font-family: var(--font-body), serif;
   font-size: clamp(1.4rem, 3vw, 1.75rem);
@@ -89,7 +97,44 @@ hr {
   margin-block: 2.5rem;
 }
 
-/* Section numbers */
+/* ── Components ───────────────────────────────────────────────────────────── */
+
+.back-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.back-link:hover { color: var(--text); }
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  align-self: flex-start;
+  transition: opacity 0.15s ease;
+}
+
+.btn:hover { opacity: 0.7; text-decoration: none; }
+
+.btn-primary  { border: 1px solid var(--text);   color: var(--text);  }
+.btn-secondary { border: 1px solid var(--border); color: var(--muted); }
+
+/* ── Document pages ───────────────────────────────────────────────────────── */
+
 .section-number {
   font-variant-numeric: tabular-nums;
   color: var(--muted);
@@ -99,7 +144,6 @@ hr {
   margin-bottom: 0.25rem;
 }
 
-/* Footnote style notes */
 .note {
   font-size: 0.8125rem;
   color: var(--muted);
@@ -108,7 +152,6 @@ hr {
   margin-block: 1.5rem;
 }
 
-/* Abstract block */
 .abstract {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -118,10 +161,60 @@ hr {
   color: var(--muted);
 }
 
-/* Meta line */
 .meta {
   font-size: 0.8125rem;
   color: var(--muted);
   letter-spacing: 0.03em;
-  margin-bottom: 2.5rem;
+}
+
+.doc-header { margin-bottom: 3rem; }
+
+.doc-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Security property table ──────────────────────────────────────────────── */
+
+.property-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-list li {
+  border-top: 1px solid var(--border);
+  padding-block: 1.25rem;
+  display: grid;
+  grid-template-columns: 16ch 1fr;
+  gap: 1.5rem;
+}
+
+.property-key {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+  line-height: 1.5;
+}
+
+.property-value {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: none;
+  margin-bottom: 0;
+}
+
+.property-value code {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.8125rem;
+  background: #f4f4f2;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+@media (max-width: 520px) {
+  .property-list li { grid-template-columns: 1fr; gap: 0.4rem; }
 }
