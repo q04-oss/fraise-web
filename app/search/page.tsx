@@ -47,6 +47,25 @@ async function braveSearch(q: string): Promise<SearchResult[]> {
   }
 }
 
+async function askDorotka(query: string, context: string): Promise<string | null> {
+  // Call the Rust server directly — server components need absolute URLs,
+  // and skipping the Next.js API route removes one unnecessary hop.
+  const rustApi = process.env.RUST_API_URL ?? "https://api.fraise.box";
+  try {
+    const res = await fetch(`${rustApi}/api/dorotka/ask`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ query, context }),
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    const data = await res.json() as { answer?: string };
+    return data.answer ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const { q } = await searchParams;
   return {
@@ -57,7 +76,11 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const { q } = await searchParams;
   const query = q?.trim() ?? "";
-  const results = query ? await braveSearch(query) : [];
+
+  const isAsk = query.toLowerCase().startsWith("/ask") || query.toLowerCase().startsWith("ask ");
+
+  const results = isAsk ? [] : (query ? await braveSearch(query) : []);
+  const dorotkaAnswer = isAsk ? await askDorotka(query, "fraise") : null;
 
   return (
     <>
@@ -67,11 +90,22 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
       </header>
 
       <main className="search-main">
+        {dorotkaAnswer && (
+          <div className="dorotka-answer">
+            <p className="dorotka-label">dorotka</p>
+            <p className="dorotka-text">{dorotkaAnswer}</p>
+          </div>
+        )}
+
+        {isAsk && !dorotkaAnswer && (
+          <p className="search-status">dorotka is unavailable.</p>
+        )}
+
         {!query && (
           <p className="search-status">no query.</p>
         )}
 
-        {query && results.length === 0 && (
+        {!isAsk && query && results.length === 0 && (
           <p className="search-status">no results.</p>
         )}
 
