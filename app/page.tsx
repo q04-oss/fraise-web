@@ -1,3 +1,5 @@
+import SearchForm from "./search/SearchForm";
+
 export const metadata = {
   title: "box fraise",
   description:
@@ -16,6 +18,8 @@ export default function Home() {
             cooperative ownership, and decentralised networks.
           </p>
         </header>
+
+        <SearchForm />
 
         <nav aria-label="Main">
           <ul className="nav-list">
