@@ -6,13 +6,6 @@ export const metadata = {
     "Security-first infrastructure for local commerce, cooperative ownership, and decentralised networks.",
 };
 
-const CHIPS = [
-  { label: "beta",          href: "https://testflight.apple.com/join/zJG1Wc5Y" },
-  { label: "security",      href: "/security" },
-  { label: "working paper", href: "/paper" },
-  { label: "support",       href: "/support" },
-];
-
 export default function Home() {
   return (
     <main className="home">
@@ -25,17 +18,18 @@ export default function Home() {
         <SearchForm />
 
         <nav className="home-chips" aria-label="Quick links">
-          {CHIPS.map((c) => (
-            <a key={c.href} className="chip" href={c.href}>
-              {c.label}
-            </a>
-          ))}
+          <a className="chip" href="https://testflight.apple.com/join/zJG1Wc5Y">beta</a>
+          <a className="chip" href="/support">support</a>
         </nav>
 
       </div>
 
-      <footer className="home-footer meta">
-        fraise.box &mdash; 2026
+      <footer className="home-footer">
+        <nav className="footer-links" aria-label="Footer">
+          <a href="/paper">working paper</a>
+          <a href="/security">security</a>
+          <a href="/privacy">privacy</a>
+        </nav>
       </footer>
     </main>
   );
