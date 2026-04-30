@@ -19,7 +19,6 @@ export default function Home() {
 
         <nav className="home-chips" aria-label="Quick links">
           <a className="chip" href="https://testflight.apple.com/join/zJG1Wc5Y">beta</a>
-          <a className="chip" href="/support">support</a>
         </nav>
 
       </div>
@@ -29,6 +28,7 @@ export default function Home() {
           <a href="/paper">working paper</a>
           <a href="/security">security</a>
           <a href="/privacy">privacy</a>
+          <a href="/support">support</a>
         </nav>
       </footer>
     </main>
