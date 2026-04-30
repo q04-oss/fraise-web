@@ -24,6 +24,7 @@ export default function Home() {
       </div>
 
       <footer className="home-footer">
+        <span className="home-footer-brand">box fraise</span>
         <nav className="footer-links" aria-label="Footer">
           <a href="/paper">working paper</a>
           <a href="/security">security</a>

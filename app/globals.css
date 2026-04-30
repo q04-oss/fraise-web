@@ -280,24 +280,48 @@ hr {
 
 .home-footer {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  background: var(--bg);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.home-footer-brand {
+  font-family: var(--font-body), serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .footer-links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
 }
 
 .footer-links a {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: var(--muted);
   text-decoration: none;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .footer-links a:hover { color: var(--text); }
+
+@media (max-width: 480px) {
+  .home-footer-brand { font-size: 1.1rem; }
+  .footer-links { gap: 0.6rem; }
+}
 
 /* ── Search page ──────────────────────────────────────────────────────────── */
 
