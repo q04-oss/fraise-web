@@ -445,3 +445,26 @@ hr {
   line-height: 1.7;
   max-width: 60ch;
 }
+
+/* ── Dorotka answer block ─────────────────────────────────────────────────── */
+
+.dorotka-answer {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-block: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dorotka-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.dorotka-text {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  max-width: 58ch;
+}
