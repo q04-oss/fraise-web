@@ -7,10 +7,10 @@ export const metadata = {
 };
 
 const CHIPS = [
-  { label: "Download beta", href: "https://testflight.apple.com/join/zJG1Wc5Y" },
-  { label: "Security",      href: "/security" },
-  { label: "Working paper", href: "/paper" },
-  { label: "Support",       href: "/support" },
+  { label: "beta",          href: "https://testflight.apple.com/join/zJG1Wc5Y" },
+  { label: "security",      href: "/security" },
+  { label: "working paper", href: "/paper" },
+  { label: "support",       href: "/support" },
 ];
 
 export default function Home() {
