@@ -4,12 +4,15 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 const INTERNAL_ROUTES: Record<string, string> = {
-  paper:    "/paper",
-  shop:     "/shop",
-  support:  "/support",
-  security: "/security",
-  whisked:  "/whisked",
-  beta:     "https://testflight.apple.com/join/zJG1Wc5Y",
+  paper:     "/paper",
+  shop:      "/shop",
+  support:   "/support",
+  security:  "/security",
+  privacy:   "/privacy",
+  whisked:   "/whisked",
+  kommune:   "/kommune",
+  shortcuts: "/shortcuts",
+  beta:      "https://testflight.apple.com/join/zJG1Wc5Y",
 };
 
 export default function SearchForm({ initialQuery = "" }: { initialQuery?: string }) {
